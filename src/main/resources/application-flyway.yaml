@@ -1,0 +1,6 @@
+spring:
+  flyway:
+    clean-disabled: true
+    ignore-missing-migrations: true
+    locations: classpath:db/migration
+    table: schema_history

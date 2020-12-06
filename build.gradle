@@ -10,14 +10,15 @@ buildscript {
     dependencies {
         classpath "org.springframework.boot:spring-boot-gradle-plugin:2.3.0.RELEASE"
         classpath "io.spring.gradle:dependency-management-plugin:1.0.10.RELEASE"
+//        classpath "se.transmode.gradle:gradle-docker:1.2"
     }
 }
 apply plugin: 'base'
 apply plugin: 'java'
 apply plugin: 'idea'
+//apply plugin: 'docker'
 apply plugin: 'io.spring.dependency-management'
 apply plugin: 'org.springframework.boot'
-
 
 repositories {
     allprojects {
@@ -44,5 +45,13 @@ tasks.withType(JavaCompile) {
 dependencies {
 
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'org.flywaydb:flyway-core'
+    compile group: 'mysql', name: 'mysql-connector-java', version: '8.0.21'
 
+
+    compileOnly 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor 'org.projectlombok:lombok:1.18.4'
+    annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
 }

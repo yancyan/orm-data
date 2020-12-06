@@ -1,6 +1,6 @@
 package com.orm.controller;
 
-import com.orm.dao.UserRepository;
+import com.orm.dao.jpa.UserRepository;
 import com.orm.domain.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;

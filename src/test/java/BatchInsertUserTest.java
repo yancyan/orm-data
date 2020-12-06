@@ -1,9 +1,13 @@
 import com.orm.OrmApplication;
-import com.orm.dao.UserRepository;
+import com.orm.dao.jpa.SysUserRepository;
+import com.orm.dao.jpa.UserRepository;
+import com.orm.domain.SysUser;
 import com.orm.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.util.Streamable;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.annotation.Resource;
@@ -31,6 +35,9 @@ public class BatchInsertUserTest {
     @Resource
     private UserRepository ur;
 
+    @Resource
+    private SysUserRepository sr;
+
     @Test
     public void test() {
         List<User> users = new ArrayList<>();
@@ -41,5 +48,25 @@ public class BatchInsertUserTest {
             users.add(r);
         }
         ur.saveAll(users);
+    }
+
+    @Test
+    public void test_customRepository() {
+        sr.findOptionById(1L).ifPresent(su -> System.out.println("####### " + su.toString()));
+    }
+    @Test
+    public void test_stream() {
+        Streamable<SysUser> stre = sr.findByUsernameContaining("name");
+    }
+
+    @Test
+    public void test_events() {
+
+        SysUser r = new SysUser();
+        r.setUsername("_testName_");
+        r.setPassword("123456");
+        r.setAge(100L);
+
+        sr.save(r);
     }
 }

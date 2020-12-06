@@ -1,5 +1,6 @@
 spring:
   flyway:
+#    clean 会删除指定schema下所有的table，生产环境必须禁掉
     clean-disabled: true
     ignore-missing-migrations: true
     locations: classpath:db/migration

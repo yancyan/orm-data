@@ -1,13 +1,15 @@
 package com.orm.domain;
 
-import lombok.Data;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Data
+@Getter
+@Setter
+@ToString(callSuper = true)
 @Entity
 @Table(name = "user")
-public class User {
+public class User extends AbstractModel{
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

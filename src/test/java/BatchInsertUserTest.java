@@ -5,7 +5,6 @@ import com.orm.domain.SysUser;
 import com.orm.domain.User;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.util.Streamable;
 import org.springframework.test.context.junit4.SpringRunner;
@@ -51,6 +50,21 @@ public class BatchInsertUserTest {
     }
 
     @Test
+    public void test_save() {
+//        User u = new User();
+//
+//        u.setName("testName_");
+//        u.setAge(100L);
+//
+//        ur.save(u);
+        ur.findById(1L).ifPresent(u -> {
+            u.setName(u.getName() + "_update.");
+            ur.save(u);
+        });
+
+    }
+
+    @Test
     public void test_customRepository() {
         sr.findOptionById(1L).ifPresent(su -> System.out.println("####### " + su.toString()));
     }
@@ -63,7 +77,7 @@ public class BatchInsertUserTest {
     public void test_events() {
 
         SysUser r = new SysUser();
-        r.setUsername("_testName_");
+        r.setUsername("_testName_ab");
         r.setPassword("123456");
         r.setAge(100L);
 

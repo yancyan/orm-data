@@ -2,16 +2,30 @@ server:
   port: 8080
 spring:
   profiles:
-    include: flyway
+    include: flyway,jpa
   application:
     name: orm-data
   datasource:
-    url: jdbc:mysql://192.168.1.102:3306/test_db?setUnicode=true&characterEncoding=utf8
+    url: jdbc:mysql://192.168.1.101:3306/test_db?setUnicode=true&characterEncoding=utf8
     driver-class-name: com.mysql.jdbc.Driver
     username: root
     password: 123456
-  jpa:
-    generate-ddl: false
-    show-sql: true
-    hibernate:
-      ddl-auto: none
+
+  task:
+    execution:
+      thread-name-prefix: task-
+      pool:
+        core-size: 8
+        max-size: 10
+        allow-core-thread-timeout: true
+        keep-alive: 60s
+      shutdown:
+        await-termination: true
+        await-termination-period: 1M
+    scheduling:
+      thread-name-prefix: scheduling-
+      pool:
+        size: 10
+      shutdown:
+        await-termination: true
+        await-termination-period: 1M

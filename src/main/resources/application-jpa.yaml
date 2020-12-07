@@ -1,0 +1,23 @@
+spring:
+  transaction:
+    default-timeout: 600000s
+  jpa:
+    generate-ddl: false
+    show-sql: true
+    database: oracle
+    open-in-view: true
+    hibernate:
+      ddl-auto: none
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+        criteria:
+          literal_handling_mode: BIND
+        format_sql: true
+        cache:
+          use_second_level_cache: false
+          use_query_cache: false
+      javax:
+        persistence:
+          sharedCache:
+            mode: ENABLE_SELECTIVE

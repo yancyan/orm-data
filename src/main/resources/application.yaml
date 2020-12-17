@@ -6,8 +6,8 @@ spring:
   application:
     name: orm-data
   datasource:
-    url: jdbc:mysql://192.168.1.102:3306/test_db?setUnicode=true&characterEncoding=utf8
-    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.1.102:3306/db_test?setUnicode=true&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
     username: root
     password: 123456
 

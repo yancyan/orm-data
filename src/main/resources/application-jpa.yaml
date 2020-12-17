@@ -4,7 +4,7 @@ spring:
   jpa:
     generate-ddl: false
     show-sql: true
-    database: oracle
+    database: mysql
     open-in-view: true
     hibernate:
       ddl-auto: none

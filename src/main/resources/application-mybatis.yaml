@@ -1,0 +1,18 @@
+mybatis:
+  mapper-locations: classpath:com/orm/mapper/*.xml
+  type-handlers-package: com.orm.config.mybatis.type
+  configuration:
+    cache-enabled: true
+    lazy-loading-enabled: true
+    auto-mapping-behavior: partial
+    default-statement-timeout: 25000
+
+pagehelper:
+  helper-dialect: mysql
+  offset-as-page-num: false
+  row-bounds-with-count: false
+  page-size-zero: false
+  reasonable: true
+  support-methods-arguments: true
+  auto-runtime-dialect: false
+  close-conn: true
